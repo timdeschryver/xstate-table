@@ -1,0 +1,40 @@
+<div
+  *ngIf="((machine.state$ | async) || [{}])[0] as state"
+  [attr.data-state]="state.toStrings()"
+>
+  <div class="selectbox"></div>
+  <div>
+    <button>New</button>
+    <button [disabled]="!state.matches('selection.SINGLE_SELECTION')">
+      Open
+    </button>
+    <button [disabled]="state.matches('selection.EMPTY_SELECTION')">
+      Delete
+    </button>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Name</th>
+          <th>Address</th>
+          <th>Email</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          [attr.data-row-id]="row.id"
+          (click)="rowClick($event, row.id)"
+          [class.selected]="state.context.selectedIds.includes(row.id)"
+          *ngFor="let row of state.context.rows"
+          #rows
+        >
+          <td>{{ row.id }}</td>
+          <td>{{ row.name }}</td>
+          <td>{{ row.address }}</td>
+          <td>{{ row.email }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,100 @@
+:root {
+  --mouse-x1: 0px;
+  --mouse-y1: 0px;
+  --mouse-x2: 0px;
+  --mouse-y2: 0px;
+}
+
+html,
+body {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  user-select: none;
+}
+
+body {
+  color: #333;
+  margin: 0;
+  padding: 13px 47px;
+  box-sizing: border-box;
+  background: var(--theme-color, rgba(239, 212, 3, 1));
+}
+
+button {
+  font-family: inherit;
+  font-size: inherit;
+  padding: 0.4em;
+  margin: 0 0 0.5em 0;
+  box-sizing: border-box;
+  border-radius: 2px;
+  background-color: rgba(0, 0, 0, 0.2);
+  color: rgba(255, 255, 255, 0.8);
+  border: 1px solid currentColor;
+}
+
+button:active {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+button:focus {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+button[disabled] {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.selectbox {
+  color: rgba(255, 255, 255, 0.5);
+  background: rgba(0, 0, 0, 0.1);
+  border: 2px solid currentColor;
+  position: absolute;
+  left: calc(var(--mouse-x1));
+  top: calc(var(--mouse-y1));
+  width: calc((var(--mouse-x2) - var(--mouse-x1)));
+  height: calc((var(--mouse-y2) - var(--mouse-y1)));
+  transition: opacity 0.3s ease-in-out;
+  z-index: 3;
+  opacity: 0;
+}
+
+[data-state*="state.dragging"] .selectbox {
+  opacity: 1;
+}
+
+table {
+  width: 100%;
+  text-align: left;
+  border-collapse: collapse;
+}
+
+tr {
+  border: 1px solid transparent;
+}
+
+th,
+td {
+  padding: 15px;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+tbody tr:nth-child(even) {
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
+thead tr {
+  background-color: rgba(0, 0, 0, 0.2);
+  color: rgba(255, 255, 255, 0.8);
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+tbody tr.selected {
+  transition: all 300ms;
+  background-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.3);
+}

@@ -1,0 +1,15 @@
+{
+  "name": "xstate-table",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "copy": "node ./scripts/copy-xstate-table"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "fs-extra": "^8.1.0"
+  }
+}
